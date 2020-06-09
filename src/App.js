@@ -8,12 +8,10 @@ function App() {
     <div className="App">
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          React microblog
-        </p>
+        <p>React microblog</p>
       </header>
       <section className="App-body">
-          <Lister />
+        <Lister />
       </section>
     </div>
   );
