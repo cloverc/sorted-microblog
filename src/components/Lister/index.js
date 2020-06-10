@@ -14,7 +14,7 @@ const Lister = () => {
     });
   }, []);
 
-  return <div>TODO - wire up lister component</div>;
+  // return <div>TODO - wire up lister component</div>;
 
   const onDeletePost = (id) => {
     // TODO: implement
@@ -31,6 +31,18 @@ const Lister = () => {
   //					<CreatePost />
   // 				</div>
   //				...
+
+  return (
+    <div className="postList">
+      {loading ? (
+        <p>Loading...</p>
+      ) : (
+        <span>
+          <Post />
+        </span>
+      )}
+    </div>
+  );
 };
 
 export default Lister;
