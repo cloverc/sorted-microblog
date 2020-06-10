@@ -38,7 +38,20 @@ const Lister = () => {
         <p>Loading...</p>
       ) : (
         <span>
-          <Post />
+          {allPosts.length > 0 ? (
+            <ul>
+              {allPosts.map(post => (
+                <Post key={post.id} title={post.title} body={post.body} author={post.author} />
+              ))}
+            </ul>
+          ) : (
+            <>
+              <p>No posts available...</p>
+            </>
+          )}
+          <div>
+            <CreatePost />
+          </div>
         </span>
       )}
     </div>
