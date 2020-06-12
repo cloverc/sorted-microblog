@@ -19,7 +19,15 @@ const Lister = () => {
   };
 
   const onCreatePost = (post) => {
-    // TODO: implement
+    const nextId = Math.max.apply(
+      null,
+      allPosts.map((item) => item.id),
+    );
+    const newPost = {
+      id: nextId + 1,
+      ...post,
+    };
+    setPosts(allPosts.concat(newPost));
   };
 
   return (
@@ -46,7 +54,7 @@ const Lister = () => {
             </>
           )}
           <div>
-            <CreatePost />
+            <CreatePost onCreate={(props) => onCreatePost(props)} />
           </div>
         </span>
       )}

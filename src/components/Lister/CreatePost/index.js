@@ -1,4 +1,5 @@
 import React, { useReducer } from 'react';
+import PropTypes from 'prop-types';
 
 const CreatePost = ({ onCreate }) => {
   const initialState = {
@@ -8,7 +9,21 @@ const CreatePost = ({ onCreate }) => {
   };
 
   const postReducer = (state, { type, ...payload }) => {
-    // TODO: implement action handlers
+    switch (type) {
+      case 'update':
+        return {...state,
+          [payload.key]: payload.value
+        };
+
+      case 'reset':
+        return {
+          title: '',
+          body: '',
+          author: '',
+        };
+      default:
+        return state;
+    }
   };
 
   const [{ title, body, author }, dispatch] = useReducer(postReducer, initialState);
@@ -61,6 +76,10 @@ const CreatePost = ({ onCreate }) => {
       </fieldset>
     </form>
   );
+};
+
+CreatePost.propTypes = {
+  onCreate: PropTypes.func,
 };
 
 export default CreatePost;
